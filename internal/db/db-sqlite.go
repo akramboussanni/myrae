@@ -13,6 +13,8 @@ import (
 var DB *sql.DB
 
 func Init(dsn string) {
+	log.Println("using sqlite db")
+
 	var err error
 	DB, err = sql.Open("sqlite3", "myrae.db")
 	if err != nil {

@@ -1,24 +1,24 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
 	"log"
 	"net/http"
-	"os"
-	"strings"
 
+	"github.com/akramboussanni/myrae/config"
 	"github.com/akramboussanni/myrae/internal/api/routes"
+	"github.com/akramboussanni/myrae/internal/db"
+	"github.com/akramboussanni/myrae/internal/repo"
 )
 
+var jwtSecret []byte
+
 func main() {
-	reader := bufio.NewReader(os.Stdin)
-	r := routes.SetupRouter()
+	config.Init()
 
-	log.Println("Port to use?")
-	portNum, _ := reader.ReadString('\n')
-	port := fmt.Sprint(":", strings.TrimSpace(portNum))
+	db.Init("todo")
+	repos := repo.NewRepos(db.DB)
+	r := routes.SetupRouter(repos)
 
-	log.Println(fmt.Sprint("Server will run on", port))
-	http.ListenAndServe(port, r)
+	log.Println("server will run @ localhost:9520")
+	http.ListenAndServe(":9520", r)
 }
