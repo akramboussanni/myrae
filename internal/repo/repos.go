@@ -1,16 +1,20 @@
 package repo
 
-import "database/sql"
+import (
+	"github.com/jmoiron/sqlx"
+)
 
 type Repos struct {
 	User  *UserRepo
-	Roles *RoleRepo
+	Role  *RoleRepo
+	Token *TokenRepo
 	// Add other repos here
 }
 
-func NewRepos(db *sql.DB) *Repos {
+func NewRepos(db *sqlx.DB) *Repos {
 	return &Repos{
 		User:  NewUserRepo(db),
-		Roles: NewRoleRepo(db),
+		Role:  NewRoleRepo(db),
+		Token: NewTokenRepo(db),
 	}
 }

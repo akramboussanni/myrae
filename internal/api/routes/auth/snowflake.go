@@ -12,6 +12,6 @@ func InitSnowflake(nodeID int64) error {
 	return err
 }
 
-func GenerateID() string {
-	return node.Generate().String()
+func GenerateID() int64 {
+	return node.Generate().Int64()
 }

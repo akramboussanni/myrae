@@ -24,3 +24,5 @@ func ComparePassword(hashed, plain string) bool {
 	err := bcrypt.CompareHashAndPassword([]byte(hashed), []byte(plain))
 	return err == nil
 }
+
+//$2a$10$2aq4xvHruo/OTfMQHAyAz.IPCEkVjhFYEzBDyqhH9pbOdwwQrdLWS

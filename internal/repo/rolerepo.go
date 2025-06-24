@@ -2,14 +2,15 @@ package repo
 
 import (
 	"context"
-	"database/sql"
+
+	"github.com/jmoiron/sqlx"
 )
 
 type RoleRepo struct {
-	db *sql.DB
+	db *sqlx.DB
 }
 
-func NewRoleRepo(db *sql.DB) *RoleRepo {
+func NewRoleRepo(db *sqlx.DB) *RoleRepo {
 	return &RoleRepo{db: db}
 }
 

@@ -21,7 +21,7 @@ func SetupRouter(repos *repo.Repos) http.Handler {
 		w.Write([]byte("myrae.io"))
 	})
 
-	r.Mount("/api/auth", auth.NewAuthRouter(repos.User))
+	r.Mount("/api/auth", auth.NewAuthRouter(repos.User, repos.Token))
 
 	return r
 }
