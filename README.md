@@ -10,5 +10,6 @@ aims to deliver a fully modular platform where you can effortlessly plug in medi
 - **Extensible ecosystem:** Connect to any external media platform via provider plugins
 
 ### Implementation
-- auth
+- auth with bcrypt hashing + hmac for jwt
+- db (support for local sqlite or postgres)
 - other features are still in progress.
